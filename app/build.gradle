@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.garanti.belgeleri"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+
+    // Dagger core
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
+    api 'com.google.dagger:dagger:2.15'
+
+    // Dagger Android
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+    api 'com.google.dagger:dagger-android:2.15'
+
+    // ButterKnife
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+
+    // ReactiveX
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Priority Job Queue
+    implementation 'com.birbit:android-priority-jobqueue:2.0.1'
+
+    //GCM Network Manager
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+
+    // RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+
+    // GSON Converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    // OkHttp Logging Interceptor
+    implementation 'com.squareup.okhttp3:okhttp:4.2.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
+    // Room Database
+    implementation 'androidx.room:room-runtime:2.2.3'
+    annotationProcessor 'androidx.room:room-compiler:2.2.3'
+    androidTestImplementation 'androidx.room:room-testing:2.2.3'
+
+    // Lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
+
+    // RxRelay
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+
+    // RxLint
+    implementation 'nl.littlerobots.rxlint:rxlint:1.6'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xmaxerrs" << "500" // or whatever number you want
+    }
+}

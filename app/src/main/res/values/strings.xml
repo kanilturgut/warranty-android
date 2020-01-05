@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Garanti Belgeleri</string>
+
+    <string name="MAIN_add_new_document">Yeni Belge Ekle</string>
+</resources>
